@@ -30,15 +30,15 @@ func _process(_delta):
 
 
 func _on_dice_sleeping_state_changed():
-	if dice.sleeping == true and dice.clicked == true:
+	if dice.sleeping == true and clicked == true:
 		print(faceUp)
-		dice.clicked = false
+		clicked = false
 
 
 func _on_dice_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouse:
 		if event.is_pressed() and event.button_mask == MOUSE_BUTTON_LEFT:
-			dice.clicked = true
+			clicked = true
 			
 			dice.global_translate(Vector3(0, 1, 0))
 			dice.rotate_x(rng.randf_range(0, 6.28319))

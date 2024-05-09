@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bltbm0jwulsr5"]
+
+[node name="Encounter" type="Node2D"]
+
+[node name="FoobarLabel" type="Label" parent="."]
+offset_left = -348.0
+offset_top = -153.0
+offset_right = -293.0
+offset_bottom = -130.0
+scale = Vector2(12.605, 12.605)
+text = "Foobar"
+
+[node name="Camera2D" type="Camera2D" parent="."]
