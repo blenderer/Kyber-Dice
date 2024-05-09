@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://ci2avjq1pux6n"]
+[gd_scene load_steps=15 format=3 uid="uid://ci2avjq1pux6n"]
 
-[ext_resource type="Script" path="res://Dice.gd" id="1_asipv"]
 [ext_resource type="Script" path="res://node_2d.gd" id="1_efafr"]
 [ext_resource type="Texture2D" uid="uid://b3byo4cydcy53" path="res://diceface1.webp" id="2_jxe2i"]
 [ext_resource type="Texture2D" uid="uid://74ev6qrhl8qs" path="res://diceface2.webp" id="3_y4otg"]
@@ -37,7 +36,6 @@ script = ExtResource("1_efafr")
 [node name="Dice" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 1.73898, -0.0152788)
 gravity_scale = 0.0
-script = ExtResource("1_asipv")
 
 [node name="DiceCollision" type="CollisionShape3D" parent="Dice"]
 shape = SubResource("BoxShape3D_yt1rn")
