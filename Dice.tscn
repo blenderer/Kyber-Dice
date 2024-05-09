@@ -66,16 +66,17 @@ target_position = Vector3(0, 1, 0)
 [node name="RayCast3D-6" type="RayCast3D" parent="Dice"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, -2.38419e-07, -0.151209, -0.426448)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0.948726, 0.172357, 0.441203)
+visible = false
 material_override = SubResource("StandardMaterial3D_mloud")
 mesh = SubResource("PlaneMesh_7gatu")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0.948726, 0.172357, 0.441203)
 shape = SubResource("ConcavePolygonShape3D_nilgu")
 

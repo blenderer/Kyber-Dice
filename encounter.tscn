@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bltbm0jwulsr5"]
+[gd_scene load_steps=2 format=3 uid="uid://bltbm0jwulsr5"]
+
+[ext_resource type="PackedScene" uid="uid://ci2avjq1pux6n" path="res://Dice.tscn" id="1_7jljk"]
 
 [node name="Encounter" type="Node2D"]
 
@@ -11,3 +13,19 @@ scale = Vector2(12.605, 12.605)
 text = "Foobar"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = -527.0
+offset_top = -265.0
+offset_right = 516.0
+offset_bottom = 248.0
+stretch = true
+
+[node name="DiceViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(1043, 513)
+render_target_update_mode = 4
+
+[node name="Dice Test" parent="SubViewportContainer/DiceViewport" instance=ExtResource("1_7jljk")]
