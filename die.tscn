@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cacgix4hva3rp"]
+
+[ext_resource type="Texture2D" uid="uid://b3byo4cydcy53" path="res://diceface1.webp" id="2_e8pub"]
+[ext_resource type="Texture2D" uid="uid://74ev6qrhl8qs" path="res://diceface2.webp" id="2_gcyi8"]
+[ext_resource type="Texture2D" uid="uid://cwq5imnlf5pwi" path="res://diceface3.webp" id="3_x0a6i"]
+[ext_resource type="Texture2D" uid="uid://ckyws62pnndcf" path="res://diceface4.webp" id="4_jlhsg"]
+[ext_resource type="Texture2D" uid="uid://cnimbgp8ch48x" path="res://diceface5.webp" id="5_mw6j8"]
+[ext_resource type="Texture2D" uid="uid://dwx5bygqfgejs" path="res://diceface6.webp" id="6_6bfg0"]
+
+[node name="Die" type="Node2D"]
+
+[node name="DieSprite1" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_e8pub")
+
+[node name="DieSprite2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(16, 0)
+texture = ExtResource("2_gcyi8")
+
+[node name="DieSprite3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, 0)
+texture = ExtResource("3_x0a6i")
+
+[node name="DieSprite4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 16)
+texture = ExtResource("4_jlhsg")
+
+[node name="DieSprite5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(16, 16)
+texture = ExtResource("5_mw6j8")
+
+[node name="DieSprite6" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, 16)
+texture = ExtResource("6_6bfg0")

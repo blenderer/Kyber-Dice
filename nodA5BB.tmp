@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://ci2avjq1pux6n"]
+
+[ext_resource type="Script" path="res://Dice.gd" id="1_asipv"]
+[ext_resource type="Texture2D" uid="uid://df7gy4ytq1fnb" path="res://dice.png" id="1_r5qqj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yt1rn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbdk1"]
+albedo_texture = ExtResource("1_r5qqj")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_sxd6y"]
+material = SubResource("StandardMaterial3D_jbdk1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6o64j"]
+size = Vector3(8.21967, 0.124512, 9.88843)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mloud"]
+albedo_color = Color(0.243137, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7gatu"]
+
+[node name="Node2D" type="Node3D"]
+
+[node name="Dice" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 1.73898, -0.0152788)
+gravity_scale = 0.0
+script = ExtResource("1_asipv")
+
+[node name="DiceCollision" type="CollisionShape3D" parent="Dice"]
+shape = SubResource("BoxShape3D_yt1rn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Dice/DiceCollision"]
+mesh = SubResource("BoxMesh_sxd6y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, -0.151209, -0.426448)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.948726, 0.172357, 0.42306)
+shape = SubResource("BoxShape3D_6o64j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0, 0, 0.0181427)
+material_override = SubResource("StandardMaterial3D_mloud")
+mesh = SubResource("PlaneMesh_7gatu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.895712, 0.444635, 0, -0.444635, 0.895712, -0.0688593, 1.84683, 6.18862)
+fov = 71.2044
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10127, 1.25895, 5.0523)
+
+[connection signal="input_event" from="Dice" to="Dice" method="_on_input_event"]

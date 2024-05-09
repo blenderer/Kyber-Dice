@@ -1,0 +1,114 @@
+[gd_scene load_steps=16 format=3 uid="uid://ci2avjq1pux6n"]
+
+[ext_resource type="Script" path="res://Dice.gd" id="1_asipv"]
+[ext_resource type="Script" path="res://node_2d.gd" id="1_efafr"]
+[ext_resource type="Texture2D" uid="uid://b3byo4cydcy53" path="res://diceface1.webp" id="2_jxe2i"]
+[ext_resource type="Texture2D" uid="uid://74ev6qrhl8qs" path="res://diceface2.webp" id="3_y4otg"]
+[ext_resource type="Texture2D" uid="uid://cwq5imnlf5pwi" path="res://diceface3.webp" id="4_ffje0"]
+[ext_resource type="Texture2D" uid="uid://ckyws62pnndcf" path="res://diceface4.webp" id="5_8t3pd"]
+[ext_resource type="Texture2D" uid="uid://cnimbgp8ch48x" path="res://diceface5.webp" id="6_5ppmn"]
+[ext_resource type="Texture2D" uid="uid://dwx5bygqfgejs" path="res://diceface6.webp" id="7_s6wqx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yt1rn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8f2bc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2jk4"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_8f2bc")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_qd2gh"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_j2jk4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mloud"]
+albedo_color = Color(0.243137, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7gatu"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nilgu"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Dice Test" type="Node3D"]
+script = ExtResource("1_efafr")
+
+[node name="Dice" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 1.73898, -0.0152788)
+gravity_scale = 0.0
+script = ExtResource("1_asipv")
+
+[node name="DiceCollision" type="CollisionShape3D" parent="Dice"]
+shape = SubResource("BoxShape3D_yt1rn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Dice/DiceCollision"]
+mesh = SubResource("BoxMesh_qd2gh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, -2.38419e-07, -0.151209, -0.426448)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0.948726, 0.172357, 0.441203)
+material_override = SubResource("StandardMaterial3D_mloud")
+mesh = SubResource("PlaneMesh_7gatu")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0.948726, 0.172357, 0.441203)
+shape = SubResource("ConcavePolygonShape3D_nilgu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.895712, 0.444635, 0, -0.444635, 0.895712, -0.0688593, 2.89018, 4.00693)
+fov = 71.2044
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.925785, 0.378051, 0, -0.378051, 0.925785, -0.10127, 4.79283, 5.0523)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(48, 32)
+
+[node name="DieSprite1" type="Sprite2D" parent="SubViewport"]
+texture_filter = 1
+texture = ExtResource("2_jxe2i")
+centered = false
+
+[node name="DieSprite2" type="Sprite2D" parent="SubViewport"]
+texture_filter = 1
+position = Vector2(16, 0)
+texture = ExtResource("3_y4otg")
+centered = false
+
+[node name="DieSprite3" type="Sprite2D" parent="SubViewport"]
+texture_filter = 1
+position = Vector2(32, 0)
+texture = ExtResource("4_ffje0")
+centered = false
+
+[node name="DieSprite4" type="Sprite2D" parent="SubViewport"]
+texture_filter = 1
+position = Vector2(0, 16)
+texture = ExtResource("5_8t3pd")
+centered = false
+
+[node name="DieSprite5" type="Sprite2D" parent="SubViewport"]
+texture_filter = 1
+position = Vector2(16, 16)
+texture = ExtResource("6_5ppmn")
+centered = false
+
+[node name="DieSprite6" type="Sprite2D" parent="SubViewport"]
+texture_filter = 1
+position = Vector2(32, 16)
+texture = ExtResource("7_s6wqx")
+centered = false
+
+[node name="EyeInTheSky" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.351, 0)
+
+[connection signal="input_event" from="Dice" to="." method="_on_dice_input_event"]
+[connection signal="input_event" from="Dice" to="Dice" method="_on_input_event"]
+[connection signal="sleeping_state_changed" from="Dice" to="." method="_on_dice_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="Dice" to="Dice" method="_on_sleeping_state_changed"]
