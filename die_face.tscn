@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0b0mkh4eo46n"]
+
+[ext_resource type="Texture2D" uid="uid://dakt3hlqjy5oy" path="res://attack.webp" id="1_68cgq"]
+
+[node name="DieFace" type="Node2D"]
+
+[node name="DiceBackground" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16, 0, 0)
+width = 2.0
+default_color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(0, -0.944444)
+scale = Vector2(1, 0.527778)
+points = PackedVector2Array(16, 0, 16, 32)
+width = 2.0
+default_color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="Line2D4" type="Line2D" parent="."]
+position = Vector2(-1.30769, 0)
+scale = Vector2(0.346154, 1)
+points = PackedVector2Array(3.77778, 16, 48, 16)
+width = 2.0
+default_color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="Attack" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_68cgq")

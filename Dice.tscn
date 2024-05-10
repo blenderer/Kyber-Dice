@@ -1,21 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://ci2avjq1pux6n"]
+[gd_scene load_steps=10 format=3 uid="uid://ci2avjq1pux6n"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_32jfq"]
-[ext_resource type="Texture2D" uid="uid://b3byo4cydcy53" path="res://diceface1.webp" id="2_thhdt"]
-[ext_resource type="Texture2D" uid="uid://74ev6qrhl8qs" path="res://diceface2.webp" id="3_gvgsb"]
-[ext_resource type="Texture2D" uid="uid://cwq5imnlf5pwi" path="res://diceface3.webp" id="4_7krgt"]
-[ext_resource type="Texture2D" uid="uid://ckyws62pnndcf" path="res://diceface4.webp" id="5_7ew7t"]
-[ext_resource type="Texture2D" uid="uid://cnimbgp8ch48x" path="res://diceface5.webp" id="6_ao3di"]
-[ext_resource type="Texture2D" uid="uid://dwx5bygqfgejs" path="res://diceface6.webp" id="7_64i0b"]
+[ext_resource type="PackedScene" uid="uid://bvkhxu35tnho" path="res://dice_texture.tscn" id="8_n843c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yt1rn"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8f2bc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_j5el3"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2jk4"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_8f2bc")
+albedo_texture = SubResource("ViewportTexture_j5el3")
 texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_qd2gh"]
@@ -97,40 +92,7 @@ disable_3d = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(48, 32)
 
-[node name="DieSprite1" type="Sprite2D" parent="SubViewport"]
-texture_filter = 1
-texture = ExtResource("2_thhdt")
-centered = false
-
-[node name="DieSprite2" type="Sprite2D" parent="SubViewport"]
-texture_filter = 1
-position = Vector2(16, 0)
-texture = ExtResource("3_gvgsb")
-centered = false
-
-[node name="DieSprite3" type="Sprite2D" parent="SubViewport"]
-texture_filter = 1
-position = Vector2(32, 0)
-texture = ExtResource("4_7krgt")
-centered = false
-
-[node name="DieSprite4" type="Sprite2D" parent="SubViewport"]
-texture_filter = 1
-position = Vector2(0, 16)
-texture = ExtResource("5_7ew7t")
-centered = false
-
-[node name="DieSprite5" type="Sprite2D" parent="SubViewport"]
-texture_filter = 1
-position = Vector2(16, 16)
-texture = ExtResource("6_ao3di")
-centered = false
-
-[node name="DieSprite6" type="Sprite2D" parent="SubViewport"]
-texture_filter = 1
-position = Vector2(32, 16)
-texture = ExtResource("7_64i0b")
-centered = false
+[node name="DiceTextureNew" parent="SubViewport" instance=ExtResource("8_n843c")]
 
 [connection signal="input_event" from="Dice" to="." method="_on_dice_input_event"]
 [connection signal="sleeping_state_changed" from="Dice" to="." method="_on_dice_sleeping_state_changed"]
