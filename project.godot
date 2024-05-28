@@ -15,6 +15,10 @@ run/main_scene="res://encounter.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Data="*res://Data.gd"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

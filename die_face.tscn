@@ -1,32 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0b0mkh4eo46n"]
+[gd_scene load_steps=3 format=3 uid="uid://bptc6g0vb8m7c"]
 
-[ext_resource type="Texture2D" uid="uid://dakt3hlqjy5oy" path="res://attack.webp" id="1_68cgq"]
+[ext_resource type="Script" path="res://die_face.gd" id="1_1uyby"]
+[ext_resource type="PackedScene" uid="uid://c0b0mkh4eo46n" path="res://die_face_texture.tscn" id="2_k82rc"]
 
 [node name="DieFace" type="Node2D"]
+script = ExtResource("1_1uyby")
 
-[node name="DiceBackground" type="Polygon2D" parent="."]
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16, 0, 0)
-width = 2.0
-default_color = Color(0.133333, 0.12549, 0.203922, 1)
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(16, 16)
+render_target_update_mode = 4
 
-[node name="Line2D2" type="Line2D" parent="."]
-position = Vector2(0, -0.944444)
-scale = Vector2(1, 0.527778)
-points = PackedVector2Array(16, 0, 16, 32)
-width = 2.0
-default_color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Line2D4" type="Line2D" parent="."]
-position = Vector2(-1.30769, 0)
-scale = Vector2(0.346154, 1)
-points = PackedVector2Array(3.77778, 16, 48, 16)
-width = 2.0
-default_color = Color(0.133333, 0.12549, 0.203922, 1)
-
-[node name="Attack" type="Sprite2D" parent="."]
-position = Vector2(8, 8)
-texture = ExtResource("1_68cgq")
+[node name="DieFace" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_k82rc")]

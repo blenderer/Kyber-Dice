@@ -1,11 +1,14 @@
 extends Node3D
 
+var diceTextureScene = load("res://dice_texture.tscn")
+
 @onready var dice = $Dice
 @onready var diceCollision = $Dice/DiceCollision
 
 var rng = RandomNumberGenerator.new()
 var faceUp:int
 var clicked = false
+var generatedDiceTexture = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,8 +39,19 @@ func _on_dice_sleeping_state_changed():
 
 
 func _on_dice_input_event(_camera, event, _position, _normal, _shape_idx):
+	
+	
 	if event is InputEventMouse:
 		if event.is_pressed() and event.button_mask == MOUSE_BUTTON_LEFT:
+			# add new texture instance
+			var diceTextureInstance = diceTextureScene.instantiate();
+			var child0 = diceTextureInstance.get_child(0)
+			child0.type = DieFaceTypes.SHIELD
+			#print(child0.type)
+			add_child(diceTextureInstance)
+			
+			print(Data.data["Characters"]["Jedi Knight"]["DieFace1"])
+			
 			clicked = true
 			
 			dice.global_translate(Vector3(0, 1, 0))
