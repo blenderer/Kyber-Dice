@@ -1,98 +1,64 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci2avjq1pux6n"]
+[gd_scene load_steps=7 format=3 uid="uid://ci2avjq1pux6n"]
 
-[ext_resource type="Script" path="res://dice_test_3d.gd" id="1_iv67y"]
-[ext_resource type="PackedScene" uid="uid://bvkhxu35tnho" path="res://dice_texture.tscn" id="8_n843c"]
+[ext_resource type="Script" path="res://dice3d.gd" id="1_0vtop"]
+[ext_resource type="PackedScene" uid="uid://bvkhxu35tnho" path="res://dice_texture.tscn" id="1_2h2hn"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yt1rn"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqiw8"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_j5el3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_prjrj"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2jk4"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_j5el3")
+albedo_texture = SubResource("ViewportTexture_prjrj")
 texture_filter = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_qd2gh"]
+[sub_resource type="BoxMesh" id="BoxMesh_b441a"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_j2jk4")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mloud"]
-albedo_color = Color(0.243137, 0, 0, 1)
+[node name="DiceContainer" type="Node3D"]
+script = ExtResource("1_0vtop")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_7gatu"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nilgu"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
-
-[node name="Dice Test" type="Node3D"]
-script = ExtResource("1_iv67y")
-
-[node name="Dice" type="RigidBody3D" parent="."]
+[node name="Dice3d" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 1.73898, -0.0152788)
 gravity_scale = 0.0
 
-[node name="DiceCollision" type="CollisionShape3D" parent="Dice"]
-shape = SubResource("BoxShape3D_yt1rn")
+[node name="DiceCollision" type="CollisionShape3D" parent="Dice3d"]
+shape = SubResource("BoxShape3D_rqiw8")
 
-[node name="DiceMesh" type="MeshInstance3D" parent="Dice/DiceCollision"]
-mesh = SubResource("BoxMesh_qd2gh")
+[node name="DiceMesh" type="MeshInstance3D" parent="Dice3d/DiceCollision"]
+mesh = SubResource("BoxMesh_b441a")
 
-[node name="RayCast3D-1" type="RayCast3D" parent="Dice"]
+[node name="RayCast3D-1" type="RayCast3D" parent="Dice3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 target_position = Vector3(0, 0, 1)
 
-[node name="RayCast3D-2" type="RayCast3D" parent="Dice"]
+[node name="RayCast3D-2" type="RayCast3D" parent="Dice3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 target_position = Vector3(1, 0, 0)
 
-[node name="RayCast3D-3" type="RayCast3D" parent="Dice"]
+[node name="RayCast3D-3" type="RayCast3D" parent="Dice3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 target_position = Vector3(0, 0, -1)
 
-[node name="RayCast3D-4" type="RayCast3D" parent="Dice"]
+[node name="RayCast3D-4" type="RayCast3D" parent="Dice3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 target_position = Vector3(-1, 0, 0)
 
-[node name="RayCast3D-5" type="RayCast3D" parent="Dice"]
+[node name="RayCast3D-5" type="RayCast3D" parent="Dice3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 1, 0)
 
-[node name="RayCast3D-6" type="RayCast3D" parent="Dice"]
+[node name="RayCast3D-6" type="RayCast3D" parent="Dice3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, -2.38419e-07, -0.151209, -0.426448)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0.948726, 0.172357, 0.441203)
-visible = false
-material_override = SubResource("StandardMaterial3D_mloud")
-mesh = SubResource("PlaneMesh_7gatu")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0.948726, 0.172357, 0.441203)
-shape = SubResource("ConcavePolygonShape3D_nilgu")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.770513, 0.637424, 0, -0.637424, 0.770513, -0.0688593, 5.0965, 4.00693)
-current = true
-fov = 71.2044
-
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.187381, 0.982287, 0, -0.982287, 0.187381, -0.137719, 11.5775, 3.84569)
-fov = 71.2044
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.925785, 0.378051, 0, -0.378051, 0.925785, -0.10127, 4.79283, 5.0523)
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(48, 32)
 
-[node name="DiceTextureNew" parent="SubViewport" instance=ExtResource("8_n843c")]
+[node name="DiceTexture" parent="SubViewport" instance=ExtResource("1_2h2hn")]
 
-[connection signal="input_event" from="Dice" to="." method="_on_dice_input_event"]
-[connection signal="sleeping_state_changed" from="Dice" to="." method="_on_dice_sleeping_state_changed"]
+[connection signal="input_event" from="Dice3d" to="." method="_on_dice_3d_input_event"]
+[connection signal="sleeping_state_changed" from="Dice3d" to="." method="_on_dice_3d_sleeping_state_changed"]

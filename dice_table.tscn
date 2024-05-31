@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0uo2vm6x1q4g"]
+
+[ext_resource type="Script" path="res://dice_table.gd" id="1_gdtg7"]
+[ext_resource type="PackedScene" uid="uid://ci2avjq1pux6n" path="res://dice.tscn" id="2_5wudb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mloud"]
+albedo_color = Color(0.243137, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7gatu"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nilgu"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Dice Table" type="Node3D"]
+script = ExtResource("1_gdtg7")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, -2.38419e-07, -0.151209, -0.426448)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0.948726, 0.172357, 0.441203)
+visible = false
+material_override = SubResource("StandardMaterial3D_mloud")
+mesh = SubResource("PlaneMesh_7gatu")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(5.43, 0, 0, 0, 5.43, 0, 0, 0, 5.43, 0.948726, 0.172357, 0.441203)
+shape = SubResource("ConcavePolygonShape3D_nilgu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.770513, 0.637424, 0, -0.637424, 0.770513, -0.0688593, 5.0965, 4.00693)
+current = true
+fov = 71.2044
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.925785, 0.378051, 0, -0.378051, 0.925785, -0.10127, 4.79283, 5.0523)
+
+[node name="Dice" parent="." instance=ExtResource("2_5wudb")]

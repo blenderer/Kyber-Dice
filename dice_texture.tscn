@@ -10,15 +10,20 @@ script = ExtResource("1_uysv8")
 
 [node name="DieFace2" parent="." instance=ExtResource("1_5gadc")]
 position = Vector2(16, 0)
+side = 2
 
 [node name="DieFace3" parent="." instance=ExtResource("1_5gadc")]
 position = Vector2(32, 0)
+side = 3
 
 [node name="DieFace4" parent="." instance=ExtResource("1_5gadc")]
 position = Vector2(0, 16)
+side = 4
 
 [node name="DieFace5" parent="." instance=ExtResource("1_5gadc")]
 position = Vector2(16, 16)
+side = 5
 
 [node name="DieFace6" parent="." instance=ExtResource("1_5gadc")]
 position = Vector2(32, 16)
+side = 6
