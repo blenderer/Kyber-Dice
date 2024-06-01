@@ -15,8 +15,7 @@ func create(diceConfigName: String, diceConfig: Dictionary):
 	_diceConfigName = diceConfigName
 	_diceConfig = diceConfig
 	var bla = get_node("SubViewport/DiceTexture/DieFace1/SubViewportContainer/SubViewport/DieFace")
-	print(bla)
-	#sides[1] = $SubViewport/DiceTexture/
+
 	pass
 
 # Called when the node enters the scene tree for the first time.

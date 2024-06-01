@@ -6,12 +6,18 @@ var rng = RandomNumberGenerator.new()
 var faceUp:int
 var clicked = false
 var generatedDiceTexture = null
+var diceScene = load("res://dice.tscn")
+@export var diceList: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	dice.connect('dice_roll_result', _on_dice_roll_result)
-	
-func _on_dice_roll_result(faceUp):
-	#print('dice result: ')
-	#print(faceUp)
-	pass
+	print()
+	var dataCharacters = Data.data.Characters
+	for diceConfigName in dataCharacters:
+		var diceConfig = dataCharacters[diceConfigName]
+		
+		if (diceConfig):
+			var diceInstance = diceScene.instantiate()
+			diceInstance.create(diceConfigName, diceConfig)
+			diceList.append(diceInstance)
+			add_child(diceInstance)

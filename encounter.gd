@@ -1,9 +1,12 @@
 extends Node2D
 
+@onready var diceTable = $"SubViewportContainer/DiceViewport/Dice Table"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"SubViewportContainer/DiceViewport/Dice Table/Dice".connect('dice_roll_result', _on_dice_roll_result)
+	for dice in diceTable.diceList:
+		dice.connect('dice_roll_result', _on_dice_roll_result)
+		
 	pass # Replace with function body.
 
 

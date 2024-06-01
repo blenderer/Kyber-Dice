@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0uo2vm6x1q4g"]
+[gd_scene load_steps=5 format=3 uid="uid://d0uo2vm6x1q4g"]
 
 [ext_resource type="Script" path="res://dice_table.gd" id="1_gdtg7"]
-[ext_resource type="PackedScene" uid="uid://ci2avjq1pux6n" path="res://dice.tscn" id="2_5wudb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mloud"]
 albedo_color = Color(0.243137, 0, 0, 1)
@@ -35,5 +34,3 @@ fov = 71.2044
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.925785, 0.378051, 0, -0.378051, 0.925785, -0.10127, 4.79283, 5.0523)
-
-[node name="Dice" parent="." instance=ExtResource("2_5wudb")]
