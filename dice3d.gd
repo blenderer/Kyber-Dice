@@ -27,12 +27,40 @@ var typeToTextureDictionary = {
 func create(diceConfigName: String, diceConfig: Dictionary):
 	_diceConfigName = diceConfigName
 	_diceConfig = diceConfig
+	
+	#new stuff
+	var dieFacePath = 'SubViewport/DiceTexture/DieFace'
+	var dieFaceTexturePath = '/SubViewportContainer/SubViewport/DieFaceTexture'
+	var dieFaceTextureLines = ['Line2D', 'Line2D2', 'Line2D4']
+	var dieFacePaths = []
+	
+	for i in range(6):
+		var path = dieFacePath + str(i + 1) + dieFaceTexturePath
+		var node = get_node(path)
+		var typeSprite = get_node(path + '/TypeSprite')
+		var lines = []
+		for lineName in dieFaceTextureLines:
+			lines.append(get_node(path + '/' + lineName))
+		dieFacePaths.append({
+			"node": node,
+			"lines": lines,
+			"typeSprite": typeSprite
+		})
+	
+	
+	#end new stuff
+	
 	var dieFaceTypeSprite1 = $SubViewport/DiceTexture/DieFace1/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
 	var dieFaceTypeSprite2 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
 	var dieFaceTypeSprite3 = $SubViewport/DiceTexture/DieFace3/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
 	var dieFaceTypeSprite4 = $SubViewport/DiceTexture/DieFace4/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
 	var dieFaceTypeSprite5 = $SubViewport/DiceTexture/DieFace5/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
 	var dieFaceTypeSprite6 = $SubViewport/DiceTexture/DieFace6/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
+	
+	#print(diceConfig.BorderColor)
+	var dieBorderLine1 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/Line2D
+	var dieBorderLine2 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/Line2D
+	var dieBorderLine3 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/Line2D
 	
 	var faceSpriteIterationDictionary = {
 		"DieFace1": dieFaceTypeSprite1,
@@ -47,6 +75,11 @@ func create(diceConfigName: String, diceConfig: Dictionary):
 		var sprite = faceSpriteIterationDictionary[configFace]
 		var type = diceConfig[configFace].type
 		sprite.set_texture(typeToTextureDictionary[type])
+	
+	for paths in dieFacePaths:
+		for line in paths.lines:
+			var color = diceConfig.BorderColor
+			line.set_default_color(Color(color.r, color.g, color.b, color.a))
 	
 	pass
 
