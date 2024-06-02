@@ -1,6 +1,5 @@
 extends Node3D
 
-@onready var dice = $"Dice"
 
 var rng = RandomNumberGenerator.new()
 var faceUp:int

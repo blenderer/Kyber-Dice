@@ -11,11 +11,43 @@ var clicked = false
 
 signal dice_roll_result(faceUp: int)
 
+var healTexture = preload("res://facetypes/heal.webp")
+var shieldTexture = preload("res://facetypes/shield.webp")
+var attackTexture = preload("res://facetypes/attack.webp")
+var emptyTexture = preload("res://facetypes/empty.webp")
+
+var typeToTextureDictionary = {
+	"attack": attackTexture,
+	"heal": healTexture,
+	"shield": shieldTexture,
+	"empty": emptyTexture,
+}
+
+
 func create(diceConfigName: String, diceConfig: Dictionary):
 	_diceConfigName = diceConfigName
 	_diceConfig = diceConfig
-	var bla = get_node("SubViewport/DiceTexture/DieFace1/SubViewportContainer/SubViewport/DieFace")
-
+	var dieFaceTypeSprite1 = $SubViewport/DiceTexture/DieFace1/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
+	var dieFaceTypeSprite2 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
+	var dieFaceTypeSprite3 = $SubViewport/DiceTexture/DieFace3/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
+	var dieFaceTypeSprite4 = $SubViewport/DiceTexture/DieFace4/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
+	var dieFaceTypeSprite5 = $SubViewport/DiceTexture/DieFace5/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
+	var dieFaceTypeSprite6 = $SubViewport/DiceTexture/DieFace6/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
+	
+	var faceSpriteIterationDictionary = {
+		"DieFace1": dieFaceTypeSprite1,
+		"DieFace2": dieFaceTypeSprite2,
+		"DieFace3": dieFaceTypeSprite3,
+		"DieFace4": dieFaceTypeSprite4,
+		"DieFace5": dieFaceTypeSprite5,
+		"DieFace6": dieFaceTypeSprite6,
+	}
+	
+	for configFace in faceSpriteIterationDictionary:
+		var sprite = faceSpriteIterationDictionary[configFace]
+		var type = diceConfig[configFace].type
+		sprite.set_texture(typeToTextureDictionary[type])
+	
 	pass
 
 # Called when the node enters the scene tree for the first time.

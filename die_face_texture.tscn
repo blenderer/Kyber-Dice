@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0b0mkh4eo46n"]
 
-[ext_resource type="Texture2D" uid="uid://dakt3hlqjy5oy" path="res://attack.webp" id="1_ey3g7"]
+[ext_resource type="Texture2D" uid="uid://dakt3hlqjy5oy" path="res://facetypes/attack.webp" id="1_l4nno"]
 [ext_resource type="Texture2D" uid="uid://1jx8ahvsjvf0" path="res://pip1.webp" id="2_j7fjh"]
 
 [node name="DieFaceTexture" type="Node2D"]
@@ -28,10 +28,10 @@ points = PackedVector2Array(3.77778, 16, 48, 16)
 width = 2.0
 default_color = Color(0.133333, 0.12549, 0.203922, 1)
 
-[node name="Attack" type="Sprite2D" parent="."]
+[node name="TypeSprite" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
-texture = ExtResource("1_ey3g7")
+texture = ExtResource("1_l4nno")
 
-[node name="Pip" type="Sprite2D" parent="."]
+[node name="PipSprite" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
 texture = ExtResource("2_j7fjh")
