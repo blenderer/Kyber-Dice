@@ -56,12 +56,7 @@ func create(diceConfigName: String, diceConfig: Dictionary):
 	var dieFaceTypeSprite4 = $SubViewport/DiceTexture/DieFace4/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
 	var dieFaceTypeSprite5 = $SubViewport/DiceTexture/DieFace5/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
 	var dieFaceTypeSprite6 = $SubViewport/DiceTexture/DieFace6/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
-	
-	#print(diceConfig.BorderColor)
-	var dieBorderLine1 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/Line2D
-	var dieBorderLine2 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/Line2D
-	var dieBorderLine3 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/Line2D
-	
+
 	var faceSpriteIterationDictionary = {
 		"DieFace1": dieFaceTypeSprite1,
 		"DieFace2": dieFaceTypeSprite2,
@@ -104,7 +99,7 @@ func _process(_delta):
 		faceUp = 5
 
 
-func _on_dice_3d_input_event(camera, event, position, normal, shape_idx):
+func _on_dice_3d_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouse:
 		if event.is_pressed() and event.button_mask == MOUSE_BUTTON_LEFT:
 			
