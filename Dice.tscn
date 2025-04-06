@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ci2avjq1pux6n"]
 
-[ext_resource type="Script" path="res://dice3d.gd" id="1_0vtop"]
+[ext_resource type="Script" uid="uid://babvgrmxborwm" path="res://dice3d.gd" id="1_0vtop"]
 [ext_resource type="PackedScene" uid="uid://bvkhxu35tnho" path="res://dice_texture.tscn" id="1_2h2hn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rqiw8"]

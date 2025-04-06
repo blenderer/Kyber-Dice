@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvkhxu35tnho"]
 
 [ext_resource type="PackedScene" uid="uid://bptc6g0vb8m7c" path="res://die_face.tscn" id="1_5gadc"]
-[ext_resource type="Script" path="res://dice_texture.gd" id="1_uysv8"]
+[ext_resource type="Script" uid="uid://smlihoxmep1a" path="res://dice_texture.gd" id="1_uysv8"]
 
 [node name="DiceTexture" type="Node2D"]
 script = ExtResource("1_uysv8")

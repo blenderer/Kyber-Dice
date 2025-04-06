@@ -12,12 +12,23 @@ config_version=5
 
 config/name="Kyber Dice"
 run/main_scene="res://encounter.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Data="*res://Data.gd"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/blend/demo.avi"
+
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
 
 [rendering]
 

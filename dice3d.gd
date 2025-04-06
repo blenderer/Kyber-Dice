@@ -44,37 +44,23 @@ func create(diceConfigName: String, diceConfig: Dictionary):
 		dieFacePaths.append({
 			"node": node,
 			"lines": lines,
-			"typeSprite": typeSprite
+			"typeSprite": typeSprite,
+			"configKey": "DieFace" + str(i + 1)
 		})
-	
-	
-	#end new stuff
-	
-	var dieFaceTypeSprite1 = $SubViewport/DiceTexture/DieFace1/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
-	var dieFaceTypeSprite2 = $SubViewport/DiceTexture/DieFace2/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
-	var dieFaceTypeSprite3 = $SubViewport/DiceTexture/DieFace3/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
-	var dieFaceTypeSprite4 = $SubViewport/DiceTexture/DieFace4/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
-	var dieFaceTypeSprite5 = $SubViewport/DiceTexture/DieFace5/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
-	var dieFaceTypeSprite6 = $SubViewport/DiceTexture/DieFace6/SubViewportContainer/SubViewport/DieFaceTexture/TypeSprite
-
-	var faceSpriteIterationDictionary = {
-		"DieFace1": dieFaceTypeSprite1,
-		"DieFace2": dieFaceTypeSprite2,
-		"DieFace3": dieFaceTypeSprite3,
-		"DieFace4": dieFaceTypeSprite4,
-		"DieFace5": dieFaceTypeSprite5,
-		"DieFace6": dieFaceTypeSprite6,
-	}
-	
-	for configFace in faceSpriteIterationDictionary:
-		var sprite = faceSpriteIterationDictionary[configFace]
-		var type = diceConfig[configFace].type
-		sprite.set_texture(typeToTextureDictionary[type])
-	
+	#{
+		#"node": node,
+		#"lines": lines,
+		#"typeSprite": typeSprite,
+		#"configKey": "DieFace" + str(i + 1)
+	#}
+	#foreach dieFacePaths i=0;i<6;i++
 	for paths in dieFacePaths:
+		var dieFaceType = diceConfig[paths.configKey].type
+		paths.typeSprite.set_texture(typeToTextureDictionary[dieFaceType])
 		for line in paths.lines:
 			var color = diceConfig.BorderColor
-			line.set_default_color(Color(color.r, color.g, color.b, color.a))
+			# TODO: fix this after upgrading 4.2 --> 4.4
+			#line.set_default_color(Color(color.r, color.g, color.b, color.a))
 	
 	pass
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bptc6g0vb8m7c"]
 
-[ext_resource type="Script" path="res://die_face.gd" id="1_1uyby"]
+[ext_resource type="Script" uid="uid://dlhip4q6kh7fs" path="res://die_face.gd" id="1_1uyby"]
 [ext_resource type="PackedScene" uid="uid://c0b0mkh4eo46n" path="res://die_face_texture.tscn" id="2_k82rc"]
 
 [node name="DieFace" type="Node2D"]

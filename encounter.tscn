@@ -1,33 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://bltbm0jwulsr5"]
+[gd_scene load_steps=4 format=3 uid="uid://bltbm0jwulsr5"]
 
 [ext_resource type="PackedScene" uid="uid://d0uo2vm6x1q4g" path="res://dice_table.tscn" id="1_fvevj"]
-[ext_resource type="Script" path="res://encounter.gd" id="1_xx6ik"]
+[ext_resource type="Script" uid="uid://v56mtova516p" path="res://encounter.gd" id="1_xx6ik"]
+[ext_resource type="PackedScene" uid="uid://enwwh45kh6g0" path="res://character_card.tscn" id="3_h2y7j"]
 
 [node name="Encounter" type="Node2D"]
 script = ExtResource("1_xx6ik")
 
 [node name="FoobarLabel" type="Label" parent="."]
-offset_left = -348.0
-offset_top = -153.0
-offset_right = -293.0
-offset_bottom = -130.0
+offset_left = 228.0
+offset_top = 170.0
+offset_right = 297.0
+offset_bottom = 193.0
 scale = Vector2(12.605, 12.605)
 text = "Roll dice!"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 323)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = -527.0
-offset_top = -265.0
-offset_right = 516.0
-offset_bottom = 248.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 1149.0
+offset_bottom = 646.0
 stretch = true
 
 [node name="DiceViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(1043, 513)
+size = Vector2i(1146, 644)
 render_target_update_mode = 4
 
 [node name="Dice Table" parent="SubViewportContainer/DiceViewport" instance=ExtResource("1_fvevj")]
+
+[node name="PartyFrames" type="VBoxContainer" parent="."]
+offset_right = 142.0
+offset_bottom = 48.0
+scale = Vector2(2.15, 2.15)
+
+[node name="CharacterCard" parent="PartyFrames" instance=ExtResource("3_h2y7j")]
+layout_mode = 2
+
+[node name="CharacterCard2" parent="PartyFrames" instance=ExtResource("3_h2y7j")]
+layout_mode = 2
+
+[node name="CharacterCard3" parent="PartyFrames" instance=ExtResource("3_h2y7j")]
+layout_mode = 2
+
+[node name="CharacterCard4" parent="PartyFrames" instance=ExtResource("3_h2y7j")]
+layout_mode = 2
+
+[node name="CharacterCard5" parent="PartyFrames" instance=ExtResource("3_h2y7j")]
+layout_mode = 2
